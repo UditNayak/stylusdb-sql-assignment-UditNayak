@@ -19,7 +19,9 @@ test('Parse SQL Query', () => {
         whereClauses: [],
         joinCondition: null,
         joinTable: null,
-        joinType: null
+        joinType: null,
+        groupByFields: null,
+        hasAggregateWithoutGroupBy: false,
     });
 });
 
@@ -32,7 +34,6 @@ test('Execute SQL Query', async () => {
     expect(result[0]).not.toHaveProperty('age');
     expect(result[0]).toEqual({ id: '1', name: 'John' });
 });
-
 test('Parse SQL Query with WHERE Clause', () => {
     const query = 'SELECT id, name FROM student WHERE age = 25';
     const parsed = parseQuery(query);
@@ -46,7 +47,9 @@ test('Parse SQL Query with WHERE Clause', () => {
         }],
         joinCondition: null,
         joinTable: null,
-        joinType: null
+        joinType: null,
+        groupByFields: null,
+        hasAggregateWithoutGroupBy: false,
     });
 });
 
